@@ -13,7 +13,7 @@ terraform {
     organization = "dev-no-ops-world"
 
     workspaces {
-      name = "mytf-workspace"
+      name = "dev-no-ops-tf-repo"
     }
   }
 }
@@ -21,6 +21,15 @@ terraform {
 provider "azurerm" {
   features {}
 }
+
+module apim {
+  source = "./modules/apim"
+  passed_location = var.location
+  passed_resource_group_name = azurerm_resource_group.rg.name
+  passed_tags = var.tags
+  passed_prefix = var.prefix
+}
+
 
 resource "azurerm_resource_group" "rg" {
   name     = "${var.prefix}TFRG"
