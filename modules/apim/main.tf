@@ -8,7 +8,7 @@ terraform {
   }
 }
 
-resource "azurerm_api_management" "apim" {
+resource "azurerm_api_management" "dev-apim" {
   name                = "dev-apim"
   location            = var.passed_location
   resource_group_name = var.passed_resource_group_name
