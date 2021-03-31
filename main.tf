@@ -30,6 +30,10 @@ module apim {
   passed_prefix = var.prefix
 }
 
+module aad {
+  source = "./modules/aad"
+}
+
 
 resource "azurerm_resource_group" "rg" {
   name     = "${var.prefix}TFRG"
